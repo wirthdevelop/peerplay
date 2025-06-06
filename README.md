@@ -10,6 +10,10 @@ Du wirst eine neue Nuxt 3 App anlegen und lokal starten.
 - Terminalzugriff
 - Git
 
+## 📚 Nützliche Links
+
+- Nuxt: [https://nuxt.com/](https://nuxt.com/)
+
 ## 🧱 Nuxt-Projekt anlegen
 
 ### 1. Projekt starten
