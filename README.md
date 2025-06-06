@@ -89,19 +89,12 @@ Füge folgenden Eintrag hinzu:
 node_modules
 ```
 
-### 3. Typescript
+### 3. Javascript
 
-Typescript Installieren:
-
-```bash
-npm install typescript --save-dev
-npx tsc --version
-npx tsc --init
-```
-Typescript Datei anlegen: 
+Javascript Datei anlegen: 
 
 ```bash
-touch index.ts
+touch index.js
 ```
 index.ts mit "Hello World" füllen:
 
@@ -115,7 +108,7 @@ package.json Skript anpassen:
 {
   ...
   "scripts": {
-    "test": "tsc index.ts && node index.js"
+    "test": "node index.js"
   }
   ...
 }
@@ -168,6 +161,7 @@ const main = async () => {
 }
 
 main().then().catch(console.error)
+
 ```
 ### 6. Node starten und testen
 
