@@ -59,16 +59,20 @@ Du hast nun:
 git checkout step-2
 ```
 
-
+---
 
 # Step 2 - P2P Node erstellen
 
 Im zweiten Schritt erstellen wir eine einfache Peer-to-Peer (P2P) Node mit libp2p, die TCP-Verbindungen aufbaut, sich verschlüsselt und Datenströme multiplexed. So legen wir die Grundlage für eine dezentrale Kommunikation zwischen Computern.
 
+---
+
 ## 📚 Nützliche Links
 
 - Typescript: [https://www.typescriptlang.org/download/](https://www.typescriptlang.org/download/)
 - js-libp2p Guide: [https://docs.libp2p.io/guides/getting-started/javascript/#lets-play-ping-pong](https://docs.libp2p.io/guides/getting-started/javascript/#lets-play-ping-pong)
+
+---
 
 ## 🧱 P2P-Projekt anlegen
 
@@ -152,6 +156,9 @@ main().then().catch(console.error)
 ```bash
 npm run dev
 ```
+
+---
+
 ## ✅ Ergebnis
 
 - Du hast eine einfache P2P Node mit libp2p erstellt.
@@ -167,3 +174,5 @@ npm run dev
 ```bash
 git checkout step-3
 ```
+
+---
