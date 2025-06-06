@@ -76,20 +76,7 @@ cd p2p-node
 npm init -y
 ```
 
-### 2. node_modules ignorieren
-
-Erstelle eine .gitignore-Datei:
-
-```bash
-touch .gitignore
-```
-Füge folgenden Eintrag hinzu:
-
-```nginx
-node_modules
-```
-
-### 3. Javascript
+### 2. Javascript
 
 Javascript Datei anlegen: 
 
@@ -98,7 +85,7 @@ touch index.js
 ```
 index.ts mit "Hello World" füllen:
 
-```ts
+```js
 console.log("Hello World");
 ```
 
@@ -120,15 +107,28 @@ package.json Skript anpassen:
 npm run test
 ```
 
+### 3. node_modules ignorieren
+
+Erstelle eine .gitignore-Datei:
+
+```bash
+touch .gitignore
+```
+Füge folgenden Eintrag hinzu:
+
+```nginx
+node_modules
+```
+
 ### 4. libp2p installieren
 
 ```bash
 npm install libp2p @libp2p/tcp @chainsafe/libp2p-noise @chainsafe/libp2p-yamux
 ```
 
-### 5. index.ts überschreiben
+### 5. index.js überschreiben
 
-```ts
+```js
 import { createLibp2p } from 'libp2p'
 import { tcp } from '@libp2p/tcp'
 import { noise } from '@chainsafe/libp2p-noise'
@@ -164,6 +164,38 @@ main().then().catch(console.error)
 
 ```
 ### 6. Node starten und testen
+
+```bash
+npm run test
+```
+
+### 7. Fehlermeldung beheben
+
+Die Warnung, die du bekommst:
+
+```nginx
+(node:52184) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspaces/peerplay/p2p-node/index.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspaces/peerplay/p2p-node/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+```
+
+bedeutet:
+
+- Deine index.js-Datei verwendet ESM-Syntax (z. B. import/export).
+- Aber dein package.json gibt nicht an, dass dein Projekt ein ES-Modul ist.
+
+Deswegen muss man in package.json folgendes hinzufügen:
+
+```json
+{
+  ...
+  "type": "module",
+  ...
+}
+```
+
+Teste es noch einmal, ob die Fehlermeldung weg ist:
 
 ```bash
 npm run test
