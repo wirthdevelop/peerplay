@@ -76,40 +76,59 @@ cd p2p-node
 npm init -y
 ```
 
-### 2. Typescript installieren
+### 2. Javascript
+
+Javascript Datei anlegen: 
 
 ```bash
-npm install typescript --save-dev
-npx tsc --version
-mkdir src
-touch src/index.ts
+touch index.js
+```
+index.ts mit "Hello World" füllen:
+
+```js
+console.log("Hello World");
 ```
 
-p2p-node/package.json öffnen und folgendes Skript hinzufügen bzw. überschreiben:
+package.json Skript anpassen:
 
 ```json
 {
+  ...
   "scripts": {
-    "dev": "ts-node src/index.ts"
+    "test": "node index.js"
   }
+  ...
 }
 ```
 
-Danach starten wir das Projekt:
+"Hello World" Konsolen Ausgabe prüfen:
 
 ```bash
-npm run dev
+npm run test
 ```
 
-### 3. libp2p installieren
+### 3. node_modules ignorieren
+
+Erstelle eine .gitignore-Datei:
+
+```bash
+touch .gitignore
+```
+Füge folgenden Eintrag hinzu:
+
+```nginx
+node_modules
+```
+
+### 4. libp2p installieren
 
 ```bash
 npm install libp2p @libp2p/tcp @chainsafe/libp2p-noise @chainsafe/libp2p-yamux
 ```
 
-### 4. Typescript-Code in src/index.ts einfügen
+### 5. index.js überschreiben
 
-```ts
+```js
 import { createLibp2p } from 'libp2p'
 import { tcp } from '@libp2p/tcp'
 import { noise } from '@chainsafe/libp2p-noise'
@@ -122,7 +141,7 @@ const main = async () => {
       listen: ['/ip4/127.0.0.1/tcp/0']
     },
     transports: [tcp()],
-    connectionEncryption: [noise()],
+    connectionEncrypters: [noise()],
     streamMuxers: [yamux()]
   })
 
@@ -142,11 +161,44 @@ const main = async () => {
 }
 
 main().then().catch(console.error)
+
 ```
-### 5. Node starten und testen
+### 6. Node starten und testen
 
 ```bash
-npm run dev
+npm run test
+```
+
+### 7. Fehlermeldung beheben
+
+Die Warnung, die du bekommst:
+
+```nginx
+(node:52184) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspaces/peerplay/p2p-node/index.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspaces/peerplay/p2p-node/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+```
+
+bedeutet:
+
+- Deine index.js-Datei verwendet ESM-Syntax (z. B. import/export).
+- Aber dein package.json gibt nicht an, dass dein Projekt ein ES-Modul ist.
+
+Deswegen muss man in package.json folgendes hinzufügen:
+
+```json
+{
+  ...
+  "type": "module",
+  ...
+}
+```
+
+Teste es noch einmal, ob die Fehlermeldung weg ist:
+
+```bash
+npm run test
 ```
 
 ## ✅ Ergebnis
