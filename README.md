@@ -61,7 +61,9 @@ git checkout step-2
 
 # Step 2 - P2P Node erstellen
 
-In dem zweiten Schritt bauen wir einen Kommunikationsweg zwischen Computern im gleichen lokalen Netzwerk.
+# Step 2 - P2P Node erstellen
+
+Im zweiten Schritt erstellen wir eine einfache Peer-to-Peer (P2P) Node mit libp2p, die TCP-Verbindungen aufbaut, sich verschlüsselt und Datenströme multiplexed. So legen wir die Grundlage für eine dezentrale Kommunikation zwischen Computern.
 
 ## 🧱 P2P-Projekt anlegen
 
