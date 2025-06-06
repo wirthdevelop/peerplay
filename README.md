@@ -28,7 +28,7 @@ Beantworte die folgenden Fragen wie angegeben:
 | ------------------------------------------------------ | -------------------------- |
 | Where would you like to create your project?           | `./nuxt-app`               |
 | Which package manager would you like to use?           | `npm`                      |
-| Initialize git repository?                             | `Yes`                      |
+| Initialize git repository?                             | `No`                      |
 | Would you like to install any of the official modules? | Alle auswählen (Leertaste) |
 
 ### 2. Projekt starten
