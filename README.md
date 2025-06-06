@@ -31,7 +31,7 @@ Beantworte die folgenden Fragen wie angegeben:
 | Initialize git repository?                             | `No`                      |
 | Would you like to install any of the official modules? | Alle auswählen (Leertaste) |
 
-### 2. Projekt starten
+### 2. Server starten
 
 ```bash
 cd nuxt-app
@@ -58,3 +58,95 @@ Du hast nun:
 ```bash
 git checkout step-2
 ```
+
+# Step 2 - P2P Node erstellen
+
+In dem zweiten Schritt bauen wir einen Kommunikationsweg zwischen Computern im gleichen lokalen Netzwerk.
+
+## 🧱 P2P-Projekt anlegen
+
+### 1. NPM initialisieren
+
+```bash
+mkdir p2p-node
+cd p2p-node
+npm init -y
+```
+
+### 2. Typescript installieren
+
+```bash
+npm install typescript --save-dev
+npx tsc --version
+mkdir src
+touch src/index.ts
+```
+
+p2p-node/package.json öffnen und folgendes Skript hinzufügen bzw. überschreiben:
+
+```json
+{
+  "scripts": {
+    "dev": "ts-node src/index.ts"
+  }
+}
+```
+
+Danach starten wir das Projekt:
+
+```bash
+npm run dev
+```
+
+### 3. libp2p installieren
+
+```bash
+npm install libp2p @libp2p/tcp @chainsafe/libp2p-noise @chainsafe/libp2p-yamux
+```
+
+### 4. Typescript-Code in src/index.ts einfügen
+
+```ts
+import { createLibp2p } from 'libp2p'
+import { tcp } from '@libp2p/tcp'
+import { noise } from '@chainsafe/libp2p-noise'
+import { yamux } from '@chainsafe/libp2p-yamux'
+
+const main = async () => {
+  const node = await createLibp2p({
+    addresses: {
+      // add a listen address (localhost) to accept TCP connections on a random port
+      listen: ['/ip4/127.0.0.1/tcp/0']
+    },
+    transports: [tcp()],
+    connectionEncryption: [noise()],
+    streamMuxers: [yamux()]
+  })
+
+  // start libp2p
+  await node.start()
+  console.log('libp2p has started')
+
+  // print out listening addresses
+  console.log('listening on addresses:')
+  node.getMultiaddrs().forEach((addr) => {
+    console.log(addr.toString())
+  })
+
+  // stop libp2p
+  await node.stop()
+  console.log('libp2p has stopped')
+}
+
+main().then().catch(console.error)
+```
+### 5. Node starten und testen
+
+```bash
+npm run dev
+```
+
+## 📚 Nützliche Links
+
+- Typescript: [https://www.typescriptlang.org/download/](https://www.typescriptlang.org/download/)
+- js-libp2p Guide: [https://docs.libp2p.io/guides/getting-started/javascript/#lets-play-ping-pong](https://docs.libp2p.io/guides/getting-started/javascript/#lets-play-ping-pong)
