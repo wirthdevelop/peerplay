@@ -76,29 +76,41 @@ cd p2p-node
 npm init -y
 ```
 
-### 2. Typescript installieren
+### 2. Typescript
+
+Typescript Installieren:
 
 ```bash
 npm install typescript --save-dev
 npx tsc --version
-mkdir src
-touch src/index.ts
+```
+Typescript Datei anlegen: 
+
+```bash
+touch index.ts
+```
+index.ts mit "Hello World" füllen:
+
+```ts
+console.log("Hello World");
 ```
 
-p2p-node/package.json öffnen und folgendes Skript hinzufügen bzw. überschreiben:
+package.json Skript anpassen:
 
 ```json
 {
+  ...
   "scripts": {
-    "dev": "ts-node src/index.ts"
+    "test": "tsc index.ts && node index.js"
   }
+  ...
 }
 ```
 
-Danach starten wir das Projekt:
+"Hello World" Konsolen Ausgabe prüfen:
 
 ```bash
-npm run dev
+npm run test
 ```
 
 ### 3. libp2p installieren
@@ -107,7 +119,7 @@ npm run dev
 npm install libp2p @libp2p/tcp @chainsafe/libp2p-noise @chainsafe/libp2p-yamux
 ```
 
-### 4. Typescript-Code in src/index.ts einfügen
+### 4. index.ts überschreiben
 
 ```ts
 import { createLibp2p } from 'libp2p'
@@ -122,7 +134,7 @@ const main = async () => {
       listen: ['/ip4/127.0.0.1/tcp/0']
     },
     transports: [tcp()],
-    connectionEncryption: [noise()],
+    connectionEncrypters: [noise()],
     streamMuxers: [yamux()]
   })
 
@@ -146,7 +158,7 @@ main().then().catch(console.error)
 ### 5. Node starten und testen
 
 ```bash
-npm run dev
+npm run test
 ```
 
 ## ✅ Ergebnis
