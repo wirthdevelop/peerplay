@@ -76,7 +76,20 @@ cd p2p-node
 npm init -y
 ```
 
-### 2. Typescript
+### 2. node_modules ignorieren
+
+Erstelle eine .gitignore-Datei:
+
+```bash
+touch .gitignore
+```
+Füge folgenden Eintrag hinzu:
+
+```nginx
+node_modules
+```
+
+### 3. Typescript
 
 Typescript Installieren:
 
@@ -114,13 +127,13 @@ package.json Skript anpassen:
 npm run test
 ```
 
-### 3. libp2p installieren
+### 4. libp2p installieren
 
 ```bash
 npm install libp2p @libp2p/tcp @chainsafe/libp2p-noise @chainsafe/libp2p-yamux
 ```
 
-### 4. index.ts überschreiben
+### 5. index.ts überschreiben
 
 ```ts
 import { createLibp2p } from 'libp2p'
@@ -156,7 +169,7 @@ const main = async () => {
 
 main().then().catch(console.error)
 ```
-### 5. Node starten und testen
+### 6. Node starten und testen
 
 ```bash
 npm run test
