@@ -83,6 +83,7 @@ Typescript Installieren:
 ```bash
 npm install typescript --save-dev
 npx tsc --version
+npx tsc --init
 ```
 Typescript Datei anlegen: 
 
