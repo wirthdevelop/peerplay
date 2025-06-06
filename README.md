@@ -59,7 +59,9 @@ Du hast nun:
 git checkout step-2
 ```
 
----
+##################################################
+#                  --- NEXT STEP ---              #
+##################################################
 
 # Step 2 - P2P Node erstellen
 
@@ -174,5 +176,3 @@ npm run dev
 ```bash
 git checkout step-3
 ```
-
----
