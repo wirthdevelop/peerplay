@@ -216,3 +216,71 @@ git checkout step-3
 ```
 
 ---
+
+# STEP 3 - P2P-Beispiel-Chat mit libp2p
+
+Im dritten Schritt schauen wir uns ein Beispiel-Chatprojekt an, das auf libp2p basiert.
+
+## 📚 Nützliche Links
+
+- Projekt auf HitHub: [https://github.com/libp2p/js-libp2p-example-chat](https://github.com/libp2p/js-libp2p-example-chat)
+
+## 🧱 Beispielprojekt klonen
+
+### 1. Repository klonen
+
+Im Terminal im peerplay/-Verzeichnis folgenden Befehl ausführen:
+
+```bash
+git clone https://github.com/libp2p/js-libp2p-example-chat.git
+```
+
+### 2. Abhängigkeiten installieren
+
+Danach ins Projektverzeichnis wechseln und die benötigten Pakete installieren:
+
+```bash
+cd js-libp2p-example-chat/
+npm install
+```
+
+## 🚀 Projekt starten
+
+### 3. Listener starten
+
+Im aktuellen Terminal-Fenster den Listener starten:
+
+```bash
+cd src
+node listener.js
+```
+
+### 4. Dialer starten
+
+Ein neues Terminal öffnen und ebenfalls ins Projektverzeichnis wechseln, dann den Dialer starten:
+
+```bash
+cd js-libp2p-example-chat/src
+node dialer.js
+```
+
+## 💬 Chat testen
+
+Nun kann in den beiden Terminals (Listener und Dialer) eine Unterhaltung geführt werden.
+Einfach Nachrichten eingeben – sie werden über das P2P-Netzwerk direkt übertragen.
+
+## ✅ Ergebnis
+
+- Du hast ein Beispielprojekt für einen P2P-Chat mit libp2p eingerichtet.
+- Der Listener und der Dialer starten jeweils als eigene Nodes und verbinden sich direkt miteinander.
+- Du kannst über das Terminal zwischen den beiden Instanzen chatten.
+
+## ➞ Nächster Schritt
+
+👉 Wechsle dazu in den Branch: `step-4`
+
+```bash
+git checkout step-4
+```
+
+---
