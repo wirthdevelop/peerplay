@@ -284,3 +284,27 @@ git checkout step-4
 ```
 
 ---
+
+# STEP 4 - Chat-Komponenten mit Nuxt 3 bauen
+
+Im vierten Schritt bauen wir ein grafisches Benutzerinterface (GUI) für den Chat mithilfe von Nuxt 3 und Nuxt UI.
+
+## 📝 Nebensächliche Information
+
+Das Projekt js-libp2p-example-chat war ursprünglich ein eigenständiges Git-Repository.
+Um Konflikte mit Git zu vermeiden, wurde das eingebettete Repository entfernt:
+
+```bash
+rm -rf js-libp2p-example-chat/.git
+```
+\*Dieser Befehl wurde bereits ausgeführt und muss nicht erneut ausgeführt werden.\*
+
+## 📚 Nützliche Links
+
+- Nuxt UI Komponenten: [https://ui.nuxt.com/components](https://ui.nuxt.com/components)
+
+## 🧱 Komponenten erstellen
+
+### 1. Auswahl zwischen Dialer und Listener
+
+Wir erstellen eine einfache Auswahlkomponente, um festzulegen, ob die App als Dialer oder Listener starten soll.
